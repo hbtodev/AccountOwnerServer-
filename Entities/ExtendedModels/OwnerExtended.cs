@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.ExtendedModels
 {
-    public class OwnerExtended
+    public class OwnerExtended : IEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -19,7 +19,7 @@ namespace Entities.ExtendedModels
 
         public OwnerExtended(Owner owner)
         {
-            Id = owner.OwnerId;
+            Id = owner.Id;
             Name = owner.Name;
             DateOfBirth = owner.DateOfBirth;
             Address = owner.Address;

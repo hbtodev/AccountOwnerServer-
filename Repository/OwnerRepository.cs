@@ -16,6 +16,13 @@ namespace Repository
         {
 
         }
+
+        public void CreateOwner(Owner owner)
+        {
+            owner.Id = new Guid();
+            Create(owner);
+        }
+
         public IEnumerable<Owner> GetAllOwners()
         {
             return FindAll()
@@ -25,7 +32,7 @@ namespace Repository
 
         public Owner GetOwnerById(Guid ownerId)
         {
-            return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
+            return FindByCondition(owner => owner.Id.Equals(ownerId))
                 .DefaultIfEmpty(new Owner())                
                 .FirstOrDefault();
          }
