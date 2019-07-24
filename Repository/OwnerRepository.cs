@@ -4,6 +4,7 @@ using System.Text;
 using Contracts;
 using Entities;
 using Entities.Models;
+using Entities.ExtendedModels;
 using System.Linq;
 
 namespace Repository
@@ -21,6 +22,22 @@ namespace Repository
                  .OrderBy(ow => ow.Name)
                  .ToList();
         }
-   
+
+        public Owner GetOwnerById(Guid ownerId)
+        {
+            return FindByCondition(owner => owner.OwnerId.Equals(ownerId))
+                .DefaultIfEmpty(new Owner())                
+                .FirstOrDefault();
+         }
+
+        public OwnerExtended GetOwnerWithDetails(Guid ownerId)
+        {
+            return new OwnerExtended(GetOwnerById(ownerId))
+            {
+                Accounts = RepositoryContext.Accounts.Where(a => a.OwnerId.Equals(ownerId))
+            };
+        }
+
+       
     }
 }
