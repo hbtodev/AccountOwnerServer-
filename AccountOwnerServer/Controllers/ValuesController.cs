@@ -84,7 +84,7 @@ namespace AccountOwnerServer.Controllers
 
             RegisterLog();
 
-            return new string[] { domesticAccounts.First().AccountId.ToString(), owners.First().Address.ToString() };
+            return new string[] { domesticAccounts.First().Id.ToString(), owners.First().Address.ToString() };
         }
 
         private void RegisterLog()

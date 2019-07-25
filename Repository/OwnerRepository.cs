@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Contracts;
+﻿using Contracts;
 using Entities;
-using Entities.Models;
 using Entities.ExtendedModels;
+using Entities.Extensions;
+using Entities.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+
 
 namespace Repository
 {
@@ -45,6 +46,15 @@ namespace Repository
             };
         }
 
-       
+        public void UpdateOwner(Owner dbOwner, Owner owner)
+        {
+            dbOwner.Map(owner);
+            Update(dbOwner);
+        }
+
+        public void DeleteOwner(Owner owner)
+        {
+            Delete(owner);
+        }
     }
 }
