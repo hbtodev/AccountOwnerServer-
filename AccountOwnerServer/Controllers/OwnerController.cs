@@ -95,7 +95,7 @@ namespace AccountOwnerServer.Controllers
         {
             try
             {
-                if (owner.IsObjectNull())
+                if (!owner.IsObjectNull())
                 {
                     if (!ModelState.IsValid)
                     {
